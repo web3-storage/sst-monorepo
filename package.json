@@ -1,0 +1,29 @@
+{
+  "name": "w3up",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf docs node_modules pnpm-lock.yaml packages/*/{pnpm-lock.yaml,coverage,.nyc_output,dist,node_modules,.next}",
+    "lint": "pnpm -r --if-present run lint",
+    "test": "pnpm -r --if-present run test",
+    "check": "pnpm -r --if-present run check"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*.*": "standard"
+  },
+  "devDependencies": {
+    "lint-staged": "^12.3.7",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.7.0"
+  },
+  "engines": {
+    "node": "16.x"
+  }
+}
